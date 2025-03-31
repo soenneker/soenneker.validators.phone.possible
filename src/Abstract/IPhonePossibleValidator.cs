@@ -1,4 +1,5 @@
 ﻿using PhoneNumbers;
+using System.Diagnostics.Contracts;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -16,6 +17,7 @@ public interface IPhonePossibleValidator
     /// <param name="defaultRegion">The default region code (e.g., "US").</param>
     /// <param name="cancellationToken">A token to observe while waiting for the task to complete.</param>
     /// <returns>A <see cref="PhoneNumber"/> object if parsing succeeds; otherwise, <c>null</c>.</returns>
+    [Pure]
     ValueTask<PhoneNumber?> Parse(string number, string defaultRegion = "US", CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -25,6 +27,7 @@ public interface IPhonePossibleValidator
     /// <param name="defaultRegion">The region code to validate against (e.g., "US").</param>
     /// <param name="cancellationToken">A token to observe while waiting for the task to complete.</param>
     /// <returns><c>true</c> if the phone number is valid; <c>false</c> if invalid; <c>null</c> if validation fails.</returns>
+    [Pure]
     ValueTask<bool?> Validate(PhoneNumber phoneNumber, string defaultRegion = "US", CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -34,5 +37,6 @@ public interface IPhonePossibleValidator
     /// <param name="defaultRegion">The region code to validate against (e.g., "US").</param>
     /// <param name="cancellationToken">A token to observe while waiting for the task to complete.</param>
     /// <returns><c>true</c> if the phone number is valid; <c>false</c> if invalid; <c>null</c> if parsing fails.</returns>
+    [Pure]
     ValueTask<bool?> Validate(string phoneNumber, string defaultRegion = "US", CancellationToken cancellationToken = default);
 }

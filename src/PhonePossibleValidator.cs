@@ -3,6 +3,7 @@ using PhoneNumbers;
 using Soenneker.Extensions.ValueTask;
 using Soenneker.Utils.Libphonenumber.Abstract;
 using Soenneker.Validators.Phone.Possible.Abstract;
+using System.Diagnostics.Contracts;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -49,5 +50,18 @@ public class PhonePossibleValidator : Validator.Validator, IPhonePossibleValidat
             return false;
 
         return instance.IsValidNumberForRegion(parsedPhoneNumber, defaultRegion);
+    }
+
+    /// <summary>
+    /// You should use the non-static methods if possible.
+    /// </summary>
+    /// <param name="phoneNumber"></param>
+    /// <param name="defaultRegion"></param>
+    /// <returns></returns>
+    [Pure]
+    public static bool? Validate(PhoneNumber phoneNumber, string defaultRegion = "US")
+    {
+        var instance = PhoneNumberUtil.GetInstance();
+        return instance.IsValidNumberForRegion(phoneNumber, defaultRegion);
     }
 }
