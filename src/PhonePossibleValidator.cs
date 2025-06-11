@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Soenneker.Validators.Phone.Possible;
 
 /// <inheritdoc cref="IPhonePossibleValidator"/>
-public class PhonePossibleValidator : Validator.Validator, IPhonePossibleValidator
+public sealed class PhonePossibleValidator : Validator.Validator, IPhonePossibleValidator
 {
     private readonly ILibphonenumberUtil _libphonenumberUtil;
 
@@ -59,7 +59,7 @@ public class PhonePossibleValidator : Validator.Validator, IPhonePossibleValidat
     /// <param name="defaultRegion"></param>
     /// <returns></returns>
     [Pure]
-    public static bool? Validate(PhoneNumber phoneNumber, string defaultRegion = "US")
+    public static bool? ValidateStatic(PhoneNumber phoneNumber, string defaultRegion = "US")
     {
         var instance = PhoneNumberUtil.GetInstance();
         return instance.IsValidNumberForRegion(phoneNumber, defaultRegion);
