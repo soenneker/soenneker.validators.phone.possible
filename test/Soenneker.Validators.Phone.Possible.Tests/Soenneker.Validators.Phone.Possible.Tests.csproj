@@ -27,7 +27,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\src\Soenneker.Validators.Phone.Possible.csproj" />
+        <ProjectReference Include="..\..\src\Soenneker.Validators.Phone.Possible\Soenneker.Validators.Phone.Possible.csproj" />
     </ItemGroup>
 
     <ItemGroup>
