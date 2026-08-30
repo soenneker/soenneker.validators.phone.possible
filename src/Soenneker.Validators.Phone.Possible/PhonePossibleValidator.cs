@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 
 namespace Soenneker.Validators.Phone.Possible;
 
-/// <inheritdoc cref="IPhonePossibleValidator"/>
 public sealed class PhonePossibleValidator : Validator.Validator, IPhonePossibleValidator
 {
     private readonly ILibphonenumberUtil _libphonenumberUtil;
@@ -27,7 +26,7 @@ public sealed class PhonePossibleValidator : Validator.Validator, IPhonePossible
         {
             return instance.Parse(number, defaultRegion);
         }
-        catch
+        catch (NumberParseException)
         {
             return null;
         }

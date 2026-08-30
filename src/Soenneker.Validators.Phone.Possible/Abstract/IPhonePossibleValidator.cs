@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace Soenneker.Validators.Phone.Possible.Abstract;
 
 /// <summary>
-/// Validates whether a given phone number is possible and valid for a specific region.
+/// Parses phone numbers and checks libphonenumber validity for a specific region.
 /// </summary>
 public interface IPhonePossibleValidator
 {
@@ -26,7 +26,7 @@ public interface IPhonePossibleValidator
     /// <param name="phoneNumber">The parsed phone number to validate.</param>
     /// <param name="defaultRegion">The region code to validate against (e.g., "US").</param>
     /// <param name="cancellationToken">A token to observe while waiting for the task to complete.</param>
-    /// <returns><c>true</c> if the phone number is valid; <c>false</c> if invalid; <c>null</c> if validation fails.</returns>
+    /// <returns><c>true</c> if the phone number is valid for the region; otherwise, <c>false</c>. The current implementation does not return <c>null</c>.</returns>
     [Pure]
     ValueTask<bool?> Validate(PhoneNumber phoneNumber, string defaultRegion = "US", CancellationToken cancellationToken = default);
 
@@ -36,7 +36,7 @@ public interface IPhonePossibleValidator
     /// <param name="phoneNumber">The raw phone number string to validate.</param>
     /// <param name="defaultRegion">The region code to validate against (e.g., "US").</param>
     /// <param name="cancellationToken">A token to observe while waiting for the task to complete.</param>
-    /// <returns><c>true</c> if the phone number is valid; <c>false</c> if invalid; <c>null</c> if parsing fails.</returns>
+    /// <returns><c>true</c> if parsing succeeds and the number is valid for the region; otherwise, <c>false</c>. The current implementation does not return <c>null</c>.</returns>
     [Pure]
     ValueTask<bool?> Validate(string phoneNumber, string defaultRegion = "US", CancellationToken cancellationToken = default);
 }
