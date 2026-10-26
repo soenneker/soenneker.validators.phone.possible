@@ -45,7 +45,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Soenneker.Utils.Libphonenumber" Version="11.0.275" />
+        <PackageReference Include="Soenneker.Utils.Libphonenumber" Version="11.0.276" />
         <PackageReference Include="Soenneker.Validators.Validator" Version="11.0.754" />
     </ItemGroup>
 </Project>
